@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Выбор сервиса</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/analytics.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <img src="./images/logo.svg" alt="Хэдер" class="logo" />
+      <div class="header-right">
+        <span class="service-name" id="service-name"></span>
+        <button class="logout-button">Выйти</button>
+      </div>
+    </header>
+
+    <div class="loader-container" id="loaderContainer">
+      <div class="loader-content" id="loader-content"></div>
+    </div>
+
+    <div class="title-container" id="title-container">
+      <h4>Потребительская корзина туриста</h4>
+      <div class="question-mark">
+        <span>?</span>
+      </div>
+    </div>
+
+    <div class="main-container" id="main-container">
+      <div class="analytics-container">
+        <div class="chart-container">
+          <svg id="chart" width="250" height="240"></svg>
+        </div>
+
+        <div class="info-container">
+          <h3>Структура потребительской корзины</h3>
+          <div class="columns-container">
+            <div class="column" id="column-1"></div>
+            <div class="column" id="column-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="logout-modal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Внимание</h2>
+          <div class="close-cross"></div>
+        </div>
+        <div class="modal-body">
+          <p>
+            Вы выходите из авторизованного профиля, вы будете перенаправлены на
+            страницу авторизации.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="cancel-button">Отмена</button>
+          <button class="confirm-button">Выйти</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/analytics.js"></script>
+  </body>
+</html>

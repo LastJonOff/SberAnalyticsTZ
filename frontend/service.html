@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Выбор сервиса</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <img src="./images/logo.svg" alt="Хэдер" class="logo" />
+    </header>
+    <div class="container">
+      <h2>Выберите сервис</h2>
+      <div class="custom-select">
+        <div class="select-trigger">Выберите сервис</div>
+        <ul class="select-options">
+          <li data-value="census">census</li>
+          <li data-value="ga">ga</li>
+          <li data-value="tourism">tourism</li>
+        </ul>
+        <input type="hidden" id="service" />
+      </div>
+
+      <button onclick="confirmService()" id="submitBtn" disabled>
+        <p class="buttonText" id="buttonText">Подтвердить</p>
+      </button>
+    </div>
+
+    <script src="./scripts/service.js"></script>
+  </body>
+</html>
