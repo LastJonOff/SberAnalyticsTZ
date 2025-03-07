@@ -20,11 +20,25 @@ setTimeout(() => {
 fetch("http://localhost:3000/analytics")
   .then((response) => response.json())
   .then((data) => {
-    renderChart(data);
+    calculateAndRender(data.categories);
   })
   .catch((error) => console.error("Ошибка загрузки данных:", error));
 
-function renderChart({ categories }) {
+function calculateAndRender(categories) {
+  const totalAmount = categories.reduce(
+    (sum, category) => sum + category.value,
+    0
+  );
+
+  categories.forEach((category) => {
+    category.percentage = ((category.value / totalAmount) * 100).toFixed(1);
+  });
+
+  renderChart(categories);
+  updateTotalAmountText(totalAmount);
+}
+
+function renderChart(categories) {
   const width = 250;
   const height = 240;
   const innerRadius = 156 / 2;
@@ -75,7 +89,7 @@ function renderChart({ categories }) {
 
   svg
     .append("text")
-    .attr("class", "center-text")
+    .attr("class", "center-text-count")
     .attr("x", 0)
     .attr("y", 10)
     .style("text-anchor", "middle")
@@ -83,7 +97,7 @@ function renderChart({ categories }) {
     .style("font-size", "16px")
     .style("line-height", "24px")
     .style("fill", "#1F1F22")
-    .text("883.9 млн ₽");
+    .text("0 млн ₽");
 
   svg
     .selectAll(".label")
@@ -101,9 +115,15 @@ function renderChart({ categories }) {
     .style("font-size", "12px")
     .style("font-weight", "bold")
     .style("fill", (d) => colorScale(d.data.label))
-    .text((d) => `${d.data.value}%`);
+    .text((d) => `${d.data.percentage}%`);
 
   createCategoryColumns(categories);
+}
+
+function updateTotalAmountText(totalAmount) {
+  const totalTextElement = document.querySelector(".center-text-count");
+  const formattedAmount = (totalAmount / 1_000_000).toFixed(1);
+  totalTextElement.textContent = `${formattedAmount} млн ₽`;
 }
 
 function createCategoryColumns(categories) {
@@ -139,7 +159,7 @@ function createCategoryColumn(columnId, categories) {
     label.style.whiteSpace = "normal";
 
     const percentage = document.createElement("span");
-    percentage.textContent = ` ${item.value}%`;
+    percentage.textContent = ` ${item.percentage}%`;
     percentage.style.marginLeft = "auto";
 
     div.appendChild(circle);
