@@ -67,9 +67,23 @@ function renderChart({ categories }) {
     .attr("x", 0)
     .attr("y", -14)
     .style("text-anchor", "middle")
-    .style("font-weight", "bold")
-    .style("font-size", `${height / 18}px`)
+    .style("font-weight", "400")
+    .style("font-size", "12px")
+    .style("line-height", "16px")
+    .style("fill", "#7D838A")
     .text("Траты");
+
+  svg
+    .append("text")
+    .attr("class", "center-text")
+    .attr("x", 0)
+    .attr("y", 10)
+    .style("text-anchor", "middle")
+    .style("font-weight", "600")
+    .style("font-size", "16px")
+    .style("line-height", "24px")
+    .style("fill", "#1F1F22")
+    .text("883.9 млн ₽");
 
   svg
     .selectAll(".label")
