@@ -146,7 +146,7 @@ h2 {
 
 @media (max-width: 1224px) {
   .categories-container {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 }
