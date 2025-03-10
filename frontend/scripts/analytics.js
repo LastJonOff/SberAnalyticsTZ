@@ -138,34 +138,26 @@ function createCategoryColumn(columnId, categories) {
   const column = document.getElementById(columnId);
   column.innerHTML = "";
   categories.forEach((item) => {
-    const div = document.createElement("div");
-    div.style.display = "flex";
-    div.style.alignItems = "center";
-    div.style.width = "100%";
-    div.style.marginBottom = "8px";
-    div.style.flexShrink = "0";
+    const row = document.createElement("div");
+    row.classList.add("category-row");
 
     const circle = document.createElement("span");
-    circle.style.width = "8px";
-    circle.style.height = "8px";
-    circle.style.borderRadius = "50%";
+    circle.classList.add("circle");
     circle.style.backgroundColor = item.color;
-    circle.style.marginRight = "8px";
 
     const label = document.createElement("span");
+    label.classList.add("label");
     label.textContent = item.label;
-    label.style.wordWrap = "break-word";
     label.style.maxWidth = "224px";
-    label.style.whiteSpace = "normal";
 
     const percentage = document.createElement("span");
-    percentage.textContent = ` ${item.percentage}%`;
-    percentage.style.marginLeft = "auto";
+    percentage.classList.add("percentage");
+    percentage.textContent = `${item.percentage}%`;
 
-    div.appendChild(circle);
-    div.appendChild(label);
-    div.appendChild(percentage);
-    column.appendChild(div);
+    row.appendChild(circle);
+    row.appendChild(label);
+    row.appendChild(percentage);
+    column.appendChild(row);
   });
 }
 

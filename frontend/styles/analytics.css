@@ -136,17 +136,50 @@ h2 {
   flex-direction: column;
 }
 
-.columns-container {
-  display: flex;
-  width: 100%;
+.categories-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
+  width: 100%;
+  align-items: stretch;
 }
 
-.column {
-  width: 50%;
+@media (max-width: 1224px) {
+  .categories-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.category-column {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(auto, max-content));
+  gap: 10px;
+}
+
+.category-row {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
+  min-width: 240px;
+}
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.label {
+  max-width: 224px;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.percentage {
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .modal-overlay {
