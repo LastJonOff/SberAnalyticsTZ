@@ -28,6 +28,18 @@ app.get("/analytics", (req, res) => {
   res.json({ categories });
 });
 
+app.post("/login", (req, res) => {
+  const { login, password } = req.body;
+
+  if (login === "login1" && password === "pass1") {
+    res.json({ success: true, redirectUrl: "service.html" });
+  } else {
+    res
+      .status(401)
+      .json({ success: false, message: "Логин или пароль неверны." });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Сервер запущен на http://localhost:${port}`);
 });
