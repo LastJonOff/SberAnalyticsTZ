@@ -32,7 +32,7 @@ app.post("/login", (req, res) => {
   const { login, password } = req.body;
 
   if (login === "login1" && password === "pass1") {
-    res.json({ success: true, redirectUrl: "service.html" });
+    res.json({ success: true, redirectUrl: "service.html", user: "TEST" });
   } else {
     res
       .status(401)
